@@ -48,15 +48,15 @@ const postRandomArticleToTwitter = async () => {
 
 const scheduleArticlePosting = () => {
     // Scheduling article posting at 3 "random" intervals
-    const intervals = ['0 9 * * *', '0 14 * * *', '0 16 * * *']; // Placeholder intervals
+    const intervals = ['0 9 * * *', '0 14 * * *', '0 19 * * *']; // Placeholder intervals
     intervals.sort(() => 0.5 - Math.random()).slice(0, 3).forEach(interval => {
         cron.schedule(interval, postRandomArticleToTwitter);
         console.log(`Post to Twitter scheduled at interval: ${interval}`);
     });
 };
 
-// Fetching articles from Medium to run every 6 hours instead of every 10 minutes as initially set
-cron.schedule('0 */6 * * *', checkAndFetchArticles);
+// Fetching articles from Medium to run every 8 hours 
+cron.schedule('0 */8 * * *', checkAndFetchArticles);
 
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
