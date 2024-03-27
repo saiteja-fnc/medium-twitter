@@ -1,28 +1,28 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
-const { mediumProfileUrl } = require('../config');
+const puppeteer = require('puppeteer');
 
-const fetchArticlesFromMedium = async () => {
-  try {
-    const { data } = await axios.get(mediumProfileUrl);
-    const $ = cheerio.load(data);
-    const articles = [];
+const fetchArticlesFromMedium = async (mediumProfileUrl) => {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.goto(mediumProfileUrl, { waitUntil: 'networkidle2' });
+    await page.waitForSelector('article'); // Ensure articles have loaded
 
-    $('article').each((index, element) => {
-      let link = $(element).find('a').attr('href');
-      // Check if the link is a full URL or just a path
-      if (!link.startsWith('http')) {
-        link = `https://medium.com/@thekubeguy${link}`;
-      }
-      const title = $(element).find('h2').text();
-      articles.push({ title, link });
+    const articles = await page.evaluate(() => {
+        const extractedArticles = [];
+        document.querySelectorAll('article').forEach(article => {
+            const titleElement = article.querySelector('h2'); // Adjust if needed
+            const linkElement = article.querySelector('a'); // Assuming the first link is what you want
+
+            if (titleElement && linkElement) {
+                const title = titleElement.innerText.trim();
+                const link = linkElement.href;
+                extractedArticles.push({ title, link });
+            }
+        });
+        return extractedArticles;
     });
 
+    await browser.close();
     return articles;
-  } catch (error) {
-    console.error('Error fetching articles from Medium:', error);
-    return [];
-  }
 };
 
-module.exports = fetchArticlesFromMedium;
+module.exports = { fetchArticlesFromMedium };
