@@ -2,61 +2,64 @@ require('dotenv').config();
 const express = require('express');
 const cron = require('node-cron');
 const { fetchArticlesFromMedium } = require('./services/mediumScraper');
+const { saveArticles, loadArticles, savePostedArticle, loadPostedArticles } = require('./utils/storage');
 const postTweet = require('./services/twitterService');
-const { fetchPostedArticles, addPostedArticle } = require('./utils/storage');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const mediumProfileUrl = process.env.MEDIUM_PROFILE_URL;
 
-const checkAndPostArticles = async () => {
-  console.log('Checking for new articles...');
+// Adjusted to include functionality for saving the state of posted articles
+const checkAndFetchArticles = async () => {
+    console.log('Checking for new articles...');
   
-  const articles = await fetchArticlesFromMedium(mediumProfileUrl);
-  console.log('First article:', articles ? articles[0] : 'No articles');
-
-  if (!articles || articles.length === 0) {
-    console.log('No new articles found.');
-    return; // Exit if no articles are fetched
-  }
-
-  console.log(`Fetched ${articles.length} articles`);
-  // Log each article's title and link
-  articles.forEach(article => {
-    console.log(`Title: ${article.title}, Link: ${article.link}`);
-  });
-
-  const postedArticles = fetchPostedArticles();
-  const maxTweetsAtATime = 2;
-  let tweetsPosted = 0;
-
-  for (const article of articles) {
-    if (tweetsPosted >= maxTweetsAtATime) {
-      console.log('Reached the limit of tweets for this execution.');
-      break; // Stop posting more tweets once the limit is reached
+    const articles = await fetchArticlesFromMedium(mediumProfileUrl); 
+  
+    if (!articles || articles.length === 0) {
+        console.log('No new articles found.');
+        return;
     }
 
-    if (!postedArticles.includes(article.title)) {
-      console.log(`Attempting to post a new article: ${article.title}`);
-      // Make sure both article.title and article.link are defined
-      if (article.title && article.link) {
-        const tweetMessage = `Check out this article: "${article.title}" ${article.link}`;
-        await postTweet(tweetMessage); // Post the tweet
-        addPostedArticle(article.title); // Mark the article as posted
-        console.log(`Posted and tracked: ${article.title}`);
-        tweetsPosted++; // Increment the counter after each tweet
-      } else {
-        console.log('Article title or link is undefined, skipping...');
-      }
-    }
-  }
+    console.log(`Fetched ${articles.length} articles.`);
+    
+    saveArticles(articles);
+    console.log('Articles have been saved for future posting.');
 };
 
-// Schedule the task to run every 10 minutes
-cron.schedule('*/10 * * * *', checkAndPostArticles);
+const postRandomArticleToTwitter = async () => {
+    const allArticles = loadArticles();
+    const postedArticles = loadPostedArticles();
+
+    // Filter for articles that have not been posted yet
+    const articlesToPost = allArticles.filter(article => 
+        !postedArticles.find(posted => posted.link === article.link));
+
+    if (articlesToPost.length > 0) {
+        const article = articlesToPost[Math.floor(Math.random() * articlesToPost.length)];
+        await postTweet(` ${article.title} ${article.link}`);
+        console.log(`Article posted: ${article.title}`);
+
+        // Save the posted article to prevent it from being posted again
+        savePostedArticle(article);
+    } else {
+        console.log("No new articles to post.");
+    }
+};
+
+const scheduleArticlePosting = () => {
+    // Scheduling article posting at 3 "random" intervals
+    const intervals = ['0 9 * * *', '0 14 * * *', '0 16 * * *']; // Placeholder intervals
+    intervals.sort(() => 0.5 - Math.random()).slice(0, 3).forEach(interval => {
+        cron.schedule(interval, postRandomArticleToTwitter);
+        console.log(`Post to Twitter scheduled at interval: ${interval}`);
+    });
+};
+
+// Fetching articles from Medium to run every 6 hours instead of every 10 minutes as initially set
+cron.schedule('0 */6 * * *', checkAndFetchArticles);
 
 app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`);
-  // Perform an initial check when the server starts
-  checkAndPostArticles(); 
+    console.log(`Server started on port ${PORT}`);
+    checkAndFetchArticles(); // Perform an initial check when the server starts
+    scheduleArticlePosting(); // Schedule article posting after the server has started
 });
