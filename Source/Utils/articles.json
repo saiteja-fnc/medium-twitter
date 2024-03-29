@@ -4,8 +4,8 @@
     "link": "https://thekubeguy.com/kubernetes-architecure-explained-14779357f01c?source=user_profile---------0----------------------------"
   },
   {
-    "title": "K0’s — Another Kubernetes Distro",
-    "link": "https://aws.plainenglish.io/?source=user_profile---------1----------------------------"
+    "title": "K0s Brings Kubernetes to Your Edge Devices",
+    "link": "https://thekubeguy.com/k0s-another-kubernetes-distro-a5c46bd2215f?source=user_profile---------1----------------------------"
   },
   {
     "title": "Understanding KubeEdge",
@@ -17,15 +17,15 @@
   },
   {
     "title": "Liveness, Readiness, and Startup Probes in Kubernetes",
-    "link": "https://towardsdev.com/?source=user_profile---------4----------------------------"
+    "link": "https://thekubeguy.com/liveness-readiness-and-startup-probes-in-kubernetes-b33a7c11d481?source=user_profile---------4----------------------------"
   },
   {
     "title": "Attribute-Based Access Control (ABAC) in Kubernetes",
-    "link": "https://faun.pub/?source=user_profile---------5----------------------------"
+    "link": "https://thekubeguy.com/attribute-based-access-control-abac-in-kubernetes-91fd8486ffb9?source=user_profile---------5----------------------------"
   },
   {
     "title": "What’s new in Kubernetes v1.30?",
-    "link": "https://aws.plainenglish.io/?source=user_profile---------6----------------------------"
+    "link": "https://thekubeguy.com/whats-new-in-kubernetes-v1-30-967c29d8bf93?source=user_profile---------6----------------------------"
   },
   {
     "title": "Kubernetes Affinity",
@@ -37,7 +37,7 @@
   },
   {
     "title": "Kubernetes Shared Clusters: A Deep Dive",
-    "link": "https://aws.plainenglish.io/?source=user_profile---------9----------------------------"
+    "link": "https://thekubeguy.com/kubernetes-shared-clusters-a-deep-dive-24d5baddec20?source=user_profile---------9----------------------------"
   },
   {
     "title": "Understanding Persistent Volumes (PV) and Persistent Volume Claims (PVC) in Kubernetes",
@@ -45,7 +45,7 @@
   },
   {
     "title": "Monitoring Kubernetes using Newrelic",
-    "link": "https://blog.devops.dev/?source=user_profile---------11----------------------------"
+    "link": "https://thekubeguy.com/monitoring-kubernetes-using-newrelic-7feaac017b6b?source=user_profile---------11----------------------------"
   },
   {
     "title": "Kubernetes monitoring with ContainIQ",
@@ -53,7 +53,7 @@
   },
   {
     "title": "Kubernetes monitoring using Prometheus",
-    "link": "https://faun.pub/?source=user_profile---------13----------------------------"
+    "link": "https://thekubeguy.com/kubernetes-monitoring-using-prometheus-121f7e8e9a74?source=user_profile---------13----------------------------"
   },
   {
     "title": "Top 3 Kubernetes monitoring tools",
@@ -64,12 +64,12 @@
     "link": "https://thekubeguy.com/3-user-friendly-tools-for-simplified-kubernetes-cluster-management-dc162f39c944?source=user_profile---------15----------------------------"
   },
   {
-    "title": "Kubernetes Annotations: The Hidden Feature That Boosts Your DevOps Game",
+    "title": "Leveraging Kubernetes Annotations for Better Control",
     "link": "https://thekubeguy.com/kubernetes-annotations-the-hidden-feature-that-boosts-your-devops-game-e6c1688b1bcf?source=user_profile---------16----------------------------"
   },
   {
     "title": "Pod Disruption Budgets",
-    "link": "https://blog.devops.dev/?source=user_profile---------17----------------------------"
+    "link": "https://thekubeguy.com/pod-disruption-budgets-85db52c9ebc5?source=user_profile---------17----------------------------"
   },
   {
     "title": "Kubernetes Autoscaling: HPA, VPA, and Cluster Autoscaler",
@@ -77,7 +77,7 @@
   },
   {
     "title": "Istio vs. Linkerd | Which one to choose?",
-    "link": "https://faun.pub/?source=user_profile---------19----------------------------"
+    "link": "https://thekubeguy.com/istio-vs-linkerd-which-one-to-choose-ed92343571e4?source=user_profile---------19----------------------------"
   },
   {
     "title": "Nginx vs. Traefik: Which one you should choose?",
@@ -85,11 +85,11 @@
   },
   {
     "title": "External secret managers for Kubernetes",
-    "link": "https://aws.plainenglish.io/?source=user_profile---------21----------------------------"
+    "link": "https://thekubeguy.com/external-secret-managers-for-kubernetes-c5b8f322dcb3?source=user_profile---------21----------------------------"
   },
   {
     "title": "Image security in Kubernetes",
-    "link": "https://faun.pub/?source=user_profile---------22----------------------------"
+    "link": "https://thekubeguy.com/image-security-in-kubernetes-cacc3799ec6e?source=user_profile---------22----------------------------"
   },
   {
     "title": "Threat modeling and safety measures",
@@ -101,7 +101,7 @@
   },
   {
     "title": "Runtime Sandboxing",
-    "link": "https://faun.pub/?source=user_profile---------25----------------------------"
+    "link": "https://thekubeguy.com/runtime-sandboxing-a8d365160db3?source=user_profile---------25----------------------------"
   },
   {
     "title": "Admission controllers for Enhanced Cluster Security",
@@ -109,7 +109,7 @@
   },
   {
     "title": "Maximizing Cluster Security with Kubernetes Audit Logs",
-    "link": "https://faun.pub/?source=user_profile---------27----------------------------"
+    "link": "https://thekubeguy.com/maximizing-cluster-security-with-kubernetes-audit-logs-19ccc0fa6b15?source=user_profile---------27----------------------------"
   },
   {
     "title": "Security contexts in Kubernetes",
@@ -121,7 +121,7 @@
   },
   {
     "title": "Pod Security Policies",
-    "link": "https://blog.devops.dev/?source=user_profile---------30----------------------------"
+    "link": "https://thekubeguy.com/pod-security-policies-b9f51b865153?source=user_profile---------30----------------------------"
   },
   {
     "title": "Role Based Access Control",
@@ -173,7 +173,7 @@
   },
   {
     "title": "Kubernetes Cron jobs",
-    "link": "https://faun.pub/?source=user_profile---------43----------------------------"
+    "link": "https://thekubeguy.com/kubernetes-cron-jobs-60e1a2509d54?source=user_profile---------43----------------------------"
   },
   {
     "title": "Jobs — k8's",
@@ -181,7 +181,7 @@
   },
   {
     "title": "K8’s Resource limits",
-    "link": "https://towardsdev.com/?source=user_profile---------45----------------------------"
+    "link": "https://thekubeguy.com/k8s-resource-limits-4df2b3809418?source=user_profile---------45----------------------------"
   },
   {
     "title": "K8’s Workload Resources",
@@ -193,7 +193,7 @@
   },
   {
     "title": "Ephemeral Containers",
-    "link": "https://blog.devops.dev/?source=user_profile---------48----------------------------"
+    "link": "https://thekubeguy.com/ephemeral-containers-fd29a1fc9f69?source=user_profile---------48----------------------------"
   },
   {
     "title": "Kubernetes operators",
@@ -205,7 +205,7 @@
   },
   {
     "title": "Kubernetes Ingress Controllers",
-    "link": "https://aws.plainenglish.io/?source=user_profile---------51----------------------------"
+    "link": "https://thekubeguy.com/kubernetes-ingress-controllers-2d91162450ac?source=user_profile---------51----------------------------"
   },
   {
     "title": "Understanding Kubernetes Deployments",
@@ -225,6 +225,6 @@
   },
   {
     "title": "Understanding Control pane and nodes in K8’s architecture",
-    "link": "https://towardsdev.com/?source=user_profile---------56----------------------------"
+    "link": "https://thekubeguy.com/understanding-control-pane-and-nodes-in-k8s-architecture-5572018f7624?source=user_profile---------56----------------------------"
   }
 ]
