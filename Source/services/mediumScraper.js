@@ -27,22 +27,16 @@ const fetchArticlesFromMedium = async (mediumProfileUrl) => {
 
     const articles = await page.evaluate(() => {
         const extractedArticles = [];
-        document.querySelectorAll('article').forEach(article => {
-            const titleElement = article.querySelector('h2'); // Adjust selector as necessary
+        // Assuming articles are contained in elements that specifically have 'data-href' attributes
+        document.querySelectorAll('[data-href]').forEach(element => {
+            const titleElement = element.querySelector('h2'); // Assuming the title is in an <h2> within the element
             const title = titleElement ? titleElement.innerText.trim() : 'No title';
-            const linkElements = article.querySelectorAll('a');
-            const links = Array.from(linkElements).map(a => a.href).filter(href => href.startsWith('https://'));
+            const dataHref = element.getAttribute('data-href');
 
-            let linkToUse = '';
-            if (links.length > 1) {
-                linkToUse = links[1]; // Skip the first link and use the second one
-            } else if (links.length === 1) {
-                linkToUse = links[0]; // Use the only link available
-            }
-
-            if (linkToUse) {
-                extractedArticles.push({ title, link: linkToUse });
-            }
+            // Construct full URL if necessary (if dataHref is relative)
+            const link = dataHref.startsWith('https://thekubeguy.com') ? dataHref : `${dataHref}`;
+            
+            extractedArticles.push({ title, link });
         });
         return extractedArticles;
     });
@@ -52,4 +46,3 @@ const fetchArticlesFromMedium = async (mediumProfileUrl) => {
 };
 
 module.exports = { fetchArticlesFromMedium };
-

@@ -51,7 +51,7 @@ const scheduleArticlePosting = () => {
     const intervals = ['0 9 * * *', '0 14 * * *', '0 19 * * *']; // Placeholder intervals
     intervals.sort(() => 0.5 - Math.random()).slice(0, 3).forEach(interval => {
         cron.schedule(interval, postRandomArticleToTwitter);
-        console.log(`Post to Twitter scheduled at interval: ${interval}`);
+    
     });
 };
 
